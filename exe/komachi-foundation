@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require "komachi_foundation"
+require "komachi_foundation/generator"
+
+class CLI < Thor
+  register(KomachiFoundation::Generator, "generate", "generate [template_file]", "generate [template_file]")
+end
+
+
+CLI.start(ARGV)
