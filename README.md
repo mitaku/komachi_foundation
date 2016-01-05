@@ -22,6 +22,7 @@ Or install it yourself as:
 
 ```
 $ komachi-foundation generate [TEMPLATE]
+$ komachi-foundation package [package]
 ```
 
 ## Development
