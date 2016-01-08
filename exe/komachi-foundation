@@ -4,6 +4,9 @@ require "komachi_foundation"
 require "komachi_foundation/generator"
 require "komachi_foundation/package_loader"
 
+require 'bundler'
+Bundler.require
+
 class CLI < Thor
   register(KomachiFoundation::Generator, "generate", "generate [template_file]", "generate [template_file]")
   register(KomachiFoundation::PackageLoader, "package", "package [package_name]", "package [package_name]")

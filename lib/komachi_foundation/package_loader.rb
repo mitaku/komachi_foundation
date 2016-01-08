@@ -1,4 +1,3 @@
-require "komachi_foundation/package"
 require "thor"
 
 module KomachiFoundation
@@ -10,21 +9,16 @@ module KomachiFoundation
       include Rails::Generators::Actions
     end
 
-    def self.source_paths
-      @_source_paths ||= Package.list
-    end
-
     argument :package
 
     def load_package
-      source = find_in_source_paths(package)
-
-      package_file = File.join(source, "package.rb")
-      if File.exists?(package_file)
-        @source_paths = [source]
-        apply(package_file)
+      _source_root = KomachiFoundation.const_get(package.capitalize).source_root
+      recipe_file = File.join(_source_root, "recipe.rb")
+      if File.exists?(recipe_file)
+        @source_paths = [File.join(_source_root, "templates")]
+        apply(recipe_file)
       else
-        raise Error, "Invalid package name #{package}/package.rb"
+        raise Error, "Invalid package name #{package}/recipe.rb"
       end
     end
   end
