@@ -1,6 +1,6 @@
 # KomachiFoundation
 
-Template Generator Base
+It's a tool for applying the application of the template.
 
 ## Installation
 
